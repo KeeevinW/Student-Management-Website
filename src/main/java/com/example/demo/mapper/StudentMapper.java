@@ -11,10 +11,16 @@ public interface StudentMapper{
 
     ArrayList<student> getStudents();
 
-    void addStudents(String name, String id);
+    void addStudentName(String name, String id);
 
-    void updateStudent(String name, String id);
+    void addStudentEmail(String email, String id);
 
-    void deleteStudent(String id);
+    void updateStudentNameById(String name, String id);
+
+    void updateStudentEmailById(String email, String id);
+
+    void deleteStudentName(String id);
+
+    void deleteStudentEmail(String id);
 
 }

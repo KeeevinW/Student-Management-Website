@@ -63,6 +63,9 @@
             <label for="StuId">ID of the student:</label>
             <input type="text" id="StuId" name="id">
             <br>
+            <label for="StuEmail">Email of the student:</label>
+            <input type="email" id="StuEmail" name="email">
+            <br>
             <input type="submit" value="Click to add student">
             <p id="StuAdd"></p>
         </form>
@@ -111,10 +114,13 @@
         <form id="updateStu">
             <h2>To update students info:</h2>
             <label for="StuId">ID of the student:</label>
-            <input id="updateID">
+            <input id="updateID" name="updateID">
             <br>
             <label for="StuName">Name of the student:</label>
-            <input id="updateName">
+            <input id="updateName" name="updateName">
+            <br>
+            <label for="StuEmail">Email of the student:</label>
+            <input id="updateEmail" name="updateEmail" type="email">
             <br>
             <input type="submit" value="Click to Update Student Info">
             <p id="Update"></p>
@@ -125,17 +131,21 @@
                     event.preventDefault();
 
                     var pathVar = encodeURIComponent(document.getElementById("updateID").value);
-                    var formData = document.getElementById("updateName").value;
+                    var formData = {
+                        name: $("#updateName").val(),
+                        email: $("#updateEmail").val()
+                    }
 
                     $.ajax({
                         url: "api/student/" + pathVar,
                         type: "PUT",
                         contentType: "application/json",
-                        data: formData,
+                        data: JSON.stringify(formData),
                         success: function(response){
                             document.getElementById("Update").innerHTML = response;
                             document.getElementById("updateID").value = "";
                             document.getElementById("updateName").value = "";
+                            document.getElementById("updateEmail").value = "";
                         }
                     });
                 });

@@ -19,17 +19,27 @@ public class StuService{
     }
 
     public String addStudent(student stu){
-        studentMapper.addStudents(stu.getName(), stu.getId());
+        studentMapper.addStudentName(stu.getName(), stu.getId());
+        studentMapper.addStudentEmail(stu.getEmail(), stu.getId());
         return "Student added";
     }
 
     public String updateStudent(student stu){
-        studentMapper.updateStudent(stu.getName(), stu.getId());
+        if(stu.getEmail()=="" && stu.getName()==""){
+            return "Nothing to update";
+        }
+        if(stu.getEmail()!=""){
+            studentMapper.updateStudentEmailById(stu.getEmail(),stu.getId());
+        }
+        if(stu.getName()!=""){
+            studentMapper.updateStudentNameById(stu.getName(),stu.getId());
+        }
         return "Student updated";
     }
 
     public String deleteStudent(String id){
-        studentMapper.deleteStudent(id);
+        studentMapper.deleteStudentName(id);
+        studentMapper.deleteStudentEmail(id);
         return "Student deleted";
     }
 }

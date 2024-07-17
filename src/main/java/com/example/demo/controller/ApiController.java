@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.UpdateStuRequest;
 import com.example.demo.model.student;
 import com.example.demo.service.StuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-
 
 
 @RestController
@@ -28,8 +28,11 @@ public class ApiController {
     }
 
     @PutMapping("/student/{id}") //PUT
-    public String updateStudent(@PathVariable String id, @RequestBody String name) {
-        return stuService.updateStudent(new student(name, id));
+    public String updateStudent(@PathVariable String id, @RequestBody UpdateStuRequest stu) {
+        System.out.println(stu.getName());
+        System.out.println(stu.getEmail());
+        return stuService.updateStudent(new student(stu.getName(), id, stu.getEmail()));
+
         //TODO: case if the student is not found
     }
 

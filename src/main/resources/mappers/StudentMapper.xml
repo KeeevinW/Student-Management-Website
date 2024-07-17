@@ -4,21 +4,41 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.StudentMapper">
     <select id="getStudents" resultType="com.example.demo.model.student">
-        SELECT * FROM PracticeDataBase.Students;
+        SELECT * FROM PracticeDataBase.Students, PracticeDataBase.Stu_email;
     </select>
     
-    <insert id="addStudents">
+    <insert id="addStudentName">
         INSERT INTO PracticeDataBase.Students
         VALUES (#{name}, #{id});
+
     </insert>
 
-    <update id="updateStudent">
-        UPDATE PracticeDataBase.Students SET StuName = #{name} WHERE StuId = #{id}
+    <insert id="addStudentEmail">
+        INSERT INTO PracticeDataBase.Stu_email
+        VALUES (#{id}, #{email});
+    </insert>
+
+    <update id="updateStudentEmailById">
+        UPDATE PracticeDataBase.Stu_email
+        SET StuEmail = #{email}
+        WHERE StuId = #{id}
     </update>
 
-    <delete id="deleteStudent">
+    <update id="updateStudentNameById">
+        UPDATE PracticeDataBase.Students
+        SET StuName = #{name}
+        WHERE StuId = #{id};
+    </update>
+
+    <delete id="deleteStudentName">
         DELETE FROM PracticeDataBase.Students
         WHERE StuId=#{id};
     </delete>
+
+    <delete id="deleteStudentEmail">
+        DELETE FROM PracticeDataBase.Stu_email
+        WHERE StuId=#{id};
+    </delete>
+
 
 </mapper>

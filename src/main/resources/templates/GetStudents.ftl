@@ -9,11 +9,13 @@
             <tr>
                 <th>Name</th>
                 <th>Student ID</th>
+				<th>Student Email</th>
             </tr>
 			<#list students as student>
 				<tr>
 					<td>${student.getName()}</td>
 					<td>${student.getId()}</td>
+					<td>${student.getEmail()}</td>
 				</tr>
 			</#list>
         </table>
