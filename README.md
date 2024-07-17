@@ -28,7 +28,7 @@ Then change the directory to the conf file by
 ```bash
 cd ./apache-maven/conf
 ```
-and type `ls` to see the file list. In the settings.xml file, add a repository mirror site inside <mirrors>, I used the central mirror site\
+and type `ls` to see the file list. In the settings.xml file, add a repository mirror site inside the \<mirrors\> tag, I used the central mirror site
 ```xml
 <mirror>
   <id>central</id>
