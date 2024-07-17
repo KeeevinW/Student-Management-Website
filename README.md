@@ -20,7 +20,7 @@ The project uses MyBatis for database access and MySQL as the database managemen
 
 ### Maven
 
-This project uses Maven to manage dependencies, you can download it from [here](https://maven.apache.org/download.cgi). After tar or unzip your downloaded file (depends on what kind of archive you downloaded file (.tar.gz or .zip) mine was .tar.gz), move it to a local directory by
+This project uses Maven to manage dependencies, you can download it from [here](https://maven.apache.org/download.cgi). After tar or unzip your downloaded file (depends on what kind of archive you downloaded (.tar.gz or .zip), mine was .tar.gz), move it to a local directory by
 ```bash
 mv apache-maven-3.9.8 ~/apache-maven
 ```
@@ -37,7 +37,7 @@ and type `ls` to see the file list. In the settings.xml file, add a repository m
 </mirror>
 ```
 You can find other Maven mirror repository sites [here](https://blog.csdn.net/qq_38217990/article/details/129257106).
-Last but not least, add Maven to your shell configuration file (~/.zshrc, ~/.bash_profile, etc.) by adding this line
+Last but not least, add Maven to path variable in your shell configuration file (~/.zshrc, ~/.bash_profile, etc.) by adding this line
 ```sh
 export PATH=~/apache-maven/bin:$PATH
 ```
