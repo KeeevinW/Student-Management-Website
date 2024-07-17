@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.StudentMapper">
+    <select id="getStudents" resultType="com.example.demo.model.student">
+        SELECT * FROM PracticeDataBase.Students;
+    </select>
+    
+    <insert id="addStudents">
+        INSERT INTO PracticeDataBase.Students
+        VALUES (#{name}, #{id});
+    </insert>
+
+    <update id="updateStudent">
+        UPDATE PracticeDataBase.Students SET StuName = #{name} WHERE StuId = #{id}
+    </update>
+
+    <delete id="deleteStudent">
+        DELETE FROM PracticeDataBase.Students
+        WHERE StuId=#{id};
+    </delete>
+
+</mapper>
