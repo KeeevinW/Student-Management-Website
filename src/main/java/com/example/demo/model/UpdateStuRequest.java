@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+//This class serves as a data transfer object (DTO) in updateStudent
 public class UpdateStuRequest {
     private String name;
     private String email;

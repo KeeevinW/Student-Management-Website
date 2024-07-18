@@ -56,14 +56,14 @@
 
         <!-- add students 同步提交 -->
         <form action="/student" method="post">
-            <h2>To add students:</h2>
-            <label for="Name">Name of the student:</label>
+            <h2>To add students: </h2>
+            <label for="Name">Name of the student: </label>
             <input type="text" id="Name" name="name">
             <br>
-            <label for="StuId">ID of the student:</label>
+            <label for="StuId">ID of the student: </label>
             <input type="text" id="StuId" name="id">
             <br>
-            <label for="StuEmail">Email of the student:</label>
+            <label for="StuEmail">Email of the student: </label>
             <input type="email" id="StuEmail" name="email">
             <br>
             <input type="submit" value="Click to add student">
@@ -76,7 +76,7 @@
         
         <form id="deleteForm">
             <h2>To delete students:</h2>
-            <label for="StuId">ID of the student:</label>
+            <label for="StuId">ID of the student: </label>
             <input type="text" id="deleteId">
             <br>
             <input type="submit" value="Click to delete student">
@@ -113,13 +113,13 @@
 
         <form id="updateStu">
             <h2>To update students info:</h2>
-            <label for="StuId">ID of the student:</label>
+            <label for="StuId">ID of the student: </label>
             <input id="updateID" name="updateID">
             <br>
-            <label for="StuName">Name of the student:</label>
+            <label for="StuName">Name of the student: </label>
             <input id="updateName" name="updateName">
             <br>
-            <label for="StuEmail">Email of the student:</label>
+            <label for="StuEmail">Email of the student: </label>
             <input id="updateEmail" name="updateEmail" type="email">
             <br>
             <input type="submit" value="Click to Update Student Info">
@@ -194,6 +194,21 @@
             });
         </script> -->
 
+        <br/>
+        <form id="getStuNameByEmail" action="/student/byemail" method="get">
+            <label for="name">Email of the student: </label>
+            <input type="text" id="email" name="email">
+            <br/>
+            <input type="submit" value="Click to get the student's name">
+        </form>
+        <br/>
+        <form id="getStuEmailByName" action="/student/byname" method="get">
+            <label for="name">Name of the student: </label>
+            <input type="text" id="name" name="name">
+            <br/>
+            <input type="submit" value="Click to get the student's email">
+        </form>
+        <br/>
         <!-- get students 表单提交 -->
         <form id="getAll" action="/student" method="get">
             <br>

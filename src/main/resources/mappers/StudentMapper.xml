@@ -6,6 +6,22 @@
     <select id="getStudents" resultType="com.example.demo.model.student">
         SELECT * FROM PracticeDataBase.Students, PracticeDataBase.Stu_email;
     </select>
+
+    <select id="getStudentNameByEmail">
+        SELECT PracticeDataBase.Students.StuName
+        FROM PracticeDataBase.Students
+        INNER JOIN PracticeDataBase.Stu_email
+        ON Students.StuId = (SELECT PracticeDataBase.Stu_email.StuId FROM PracticeDataBase.Stu_email WHERE PracticeDataBase.Stu_email.StuEmail = #{email});
+    </select>
+
+    <select id="getStudentEmailByName">
+        SELECT PracticeDataBase.Stu_email.StuEmail
+        FROM PracticeDataBase.Stu_email
+        INNER JOIN PracticeDataBase.Students
+        ON Stu_email.StuId = (SELECT PracticeDataBase.Students.StuId FROM PracticeDataBase.Students WHERE PracticeDataBase.Students.StuName = #{name});
+
+    </select>
+
     
     <insert id="addStudentName">
         INSERT INTO PracticeDataBase.Students

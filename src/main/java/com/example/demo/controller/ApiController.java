@@ -27,6 +27,18 @@ public class ApiController {
         return new ResponseEntity<>(responses, HttpStatus.OK);
     }
 
+    @GetMapping("/student/byemail")
+    public ResponseEntity<String> getStudentNameByEmail(@RequestParam("email") String email) {
+        String response = stuService.getStudentNameByEmail(email);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/student/byname")
+    public ResponseEntity<String> getStudentEmailByName(@RequestParam("name") String name) {
+        String response = stuService.getStudentEmailByName(name);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
     @PutMapping("/student/{id}") //PUT
     public String updateStudent(@PathVariable String id, @RequestBody UpdateStuRequest stu) {
         System.out.println(stu.getName());

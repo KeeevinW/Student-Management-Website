@@ -11,6 +11,10 @@ public interface StudentMapper{
 
     ArrayList<student> getStudents();
 
+    String getStudentNameByEmail(String email);
+
+    String getStudentEmailByName(String name);
+
     void addStudentName(String name, String id);
 
     void addStudentEmail(String email, String id);

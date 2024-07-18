@@ -18,6 +18,14 @@ public class StuService{
         return studentMapper.getStudents();
     }
 
+    public String getStudentNameByEmail(String email){
+        return studentMapper.getStudentNameByEmail(email);
+    }
+
+    public String getStudentEmailByName(String name){
+        return studentMapper.getStudentEmailByName(name);
+    }
+
     public String addStudent(student stu){
         studentMapper.addStudentName(stu.getName(), stu.getId());
         studentMapper.addStudentEmail(stu.getEmail(), stu.getId());
