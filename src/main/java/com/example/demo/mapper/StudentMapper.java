@@ -5,6 +5,7 @@ import com.example.demo.model.student;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 @Mapper
 public interface StudentMapper{
@@ -27,4 +28,5 @@ public interface StudentMapper{
 
     void deleteStudentEmail(String id);
 
+    Map<String, String> getStudentNameAndEmailById(String id);
 }

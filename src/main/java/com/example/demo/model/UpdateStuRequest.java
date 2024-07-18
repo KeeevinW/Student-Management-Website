@@ -10,6 +10,16 @@ public class UpdateStuRequest {
         this.email = email;
     }
 
+    public UpdateStuRequest (String str){
+        if(str.indexOf("@")==-1){
+            this.name = str;
+            this.email = "";
+        }else {
+            this.name = "";
+            this.email = str;
+        }
+    }
+
     public String getName() {
         return name;
     }

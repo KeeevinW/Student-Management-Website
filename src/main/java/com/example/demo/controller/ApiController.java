@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 @RestController
@@ -39,12 +40,15 @@ public class ApiController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @GetMapping("/student/byid")
+    public ResponseEntity<Map<String, String>> getStudentNameAndEmailById(@RequestParam("id") String id){
+        Map<String, String> response = stuService.getStudentNameAndEmailById(id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
     @PutMapping("/student/{id}") //PUT
     public String updateStudent(@PathVariable String id, @RequestBody UpdateStuRequest stu) {
-        System.out.println(stu.getName());
-        System.out.println(stu.getEmail());
         return stuService.updateStudent(new student(stu.getName(), id, stu.getEmail()));
-
         //TODO: case if the student is not found
     }
 

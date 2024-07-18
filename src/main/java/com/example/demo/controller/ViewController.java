@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 @Controller
 public class ViewController{
@@ -41,7 +42,7 @@ public class ViewController{
     }
 
     @GetMapping("/student/byemail")
-    public String GetStuByE (Model model, @RequestParam("email") String email){
+    public String GetStuByE (Model model, @RequestParam("email") String email){ //Get student's name by email
         String apiUrl = "http://localhost:8080/api/student/byemail";
 
         HttpHeaders headers = new HttpHeaders();
@@ -54,7 +55,7 @@ public class ViewController{
     }
 
     @GetMapping("/student/byname")
-    public  String GetStuByN (Model model, @RequestParam("name") String name){
+    public String GetStuByN (Model model, @RequestParam("name") String name){ //Get student's email by name
         String apiUrl = "http://localhost:8080/api/student/byname";
 
         HttpHeaders headers = new HttpHeaders();
@@ -67,32 +68,18 @@ public class ViewController{
         return "GetStudentEmailByName";
     }
 
-//    @PutMapping("/student/{id}")
-//    public String UpdateStu (Model model, @PathVariable String id, @RequestBody String name){
-//        String apiUrl = "http://localhost:8080/api/student/"+id;
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.set("Content-Type","application/json");
-//        HttpEntity<String> requestEntity = new HttpEntity<>(name, headers);
-//        ResponseEntity<String> response = restTemplate.exchange(apiUrl, HttpMethod.PUT, requestEntity, String.class);
-//
-//        model.addAttribute("UpdateStatus", response.getBody());
-//        return "UpdateStudents";
-//    }
-//
-//    @DeleteMapping("/student/{id}")
-//    public String DeleteStu (Model model, @PathVariable String id){
-//        String apiUrl = "http://localhost:8080/api/student"+id;
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.set("Content-Type","application/json");
-//        HttpEntity<String> requestEntity = new HttpEntity<>(headers);
-//        ResponseEntity<String> response = restTemplate.exchange(apiUrl, HttpMethod.DELETE, requestEntity, String.class);
-//
-//
-//        model.addAttribute("DeleteStatus",response.getBody());
-//        return "DeleteStudents";
-//    }
+    @GetMapping("/student/byid")
+    public String GetStuByI (Model model, @RequestParam("id") String id){
+        String apiUrl = "http://localhost:8080/api/student/byid";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/json");
+        HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(headers);
+        HttpEntity<Map<String, String>> response = restTemplate.exchange(apiUrl + "?id=" + id, HttpMethod.GET, requestEntity, new ParameterizedTypeReference<Map<String, String>>() {});
+
+        model.addAttribute("StuNameAndEmail", response.getBody());
+        return "getStudentNameAndEmailById";
+    }
 
     @PostMapping("/student")
     public String AddStu (Model model, @ModelAttribute student stu){

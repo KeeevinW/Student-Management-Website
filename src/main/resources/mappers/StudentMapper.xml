@@ -4,7 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.StudentMapper">
     <select id="getStudents" resultType="com.example.demo.model.student">
-        SELECT * FROM PracticeDataBase.Students, PracticeDataBase.Stu_email;
+        SELECT * FROM PracticeDataBase.Students, PracticeDataBase.Stu_email
+        WHERE PracticeDataBase.Students.StuId = PracticeDataBase.Stu_email.StuId;
     </select>
 
     <select id="getStudentNameByEmail">
@@ -20,6 +21,12 @@
         INNER JOIN PracticeDataBase.Students
         ON Stu_email.StuId = (SELECT StuId FROM PracticeDataBase.Students WHERE StuName = #{name});
 
+    </select>
+
+    <select id="getStudentNameAndEmailById">
+        SELECT PracticeDataBase.Students.StuName, PracticeDataBase.Stu_Email.StuEmail
+        FROM PracticeDataBase.Students, PracticeDataBase.Stu_email
+        WHERE PracticeDataBase.Students.StuId = #{id} AND PracticeDataBase.Stu_email.StuId = #{id};
     </select>
 
     
