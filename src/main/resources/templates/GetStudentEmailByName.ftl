@@ -5,7 +5,7 @@
     <title>Get Student Email by Name</title>
 </head>
 <body style="text-align: center">
-    <h1>The Name of the Student is: </h1>
+    <h1>The Email of the Student is: </h1>
     <br/>
     <p>${StuEmail}</p>
     <br/>

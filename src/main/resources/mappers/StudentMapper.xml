@@ -12,14 +12,16 @@
         SELECT StuName
         FROM PracticeDataBase.Students
         INNER JOIN PracticeDataBase.Stu_email
-        ON Students.StuId = (SELECT StuId FROM PracticeDataBase.Stu_email WHERE StuEmail = #{email});
+        ON Students.StuId = Stu_email.StuId
+        WHERE StuEmail = #{email};
     </select>
 
     <select id="getStudentEmailByName">
         SELECT StuEmail
         FROM PracticeDataBase.Stu_email
         INNER JOIN PracticeDataBase.Students
-        ON Stu_email.StuId = (SELECT StuId FROM PracticeDataBase.Students WHERE StuName = #{name});
+        ON Stu_email.StuId = Students.StuId
+        WHERE Students.StuName = #{name};
 
     </select>
 
