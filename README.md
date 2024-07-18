@@ -36,7 +36,7 @@ and type `ls` to see the file list. In the settings.xml file, add a repository m
   <url>https://repo.maven.apache.org/maven2</url>
 </mirror>
 ```
-You can find other Maven mirror repository sites [here](https://blog.csdn.net/qq_38217990/article/details/129257106).
+You can find other Maven mirror repository sites [here](https://blog.csdn.net/qq_38217990/article/details/129257106).\
 Last but not least, add Maven to path variable in your shell configuration file (~/.zshrc, ~/.bash_profile, etc.) by adding this line
 ```sh
 export PATH=~/apache-maven/bin:$PATH
@@ -44,7 +44,10 @@ export PATH=~/apache-maven/bin:$PATH
 
 ### MySQL
 
-You can download MySQL from [here](https://dev.mysql.com/downloads/mysql/), and [MySQL Workbence](https://dev.mysql.com/downloads/workbench/) if you want. Then create a new schema named "PracticeDataBase" and a table named "Students", if you prefer a different schema name or a different table name, you will need to modify the StudentMapper.xml file. In the Students table, create two columns named "StuName" and "StuId", again if you prefer different names, you will need to modify the student.java file.
+You can download MySQL from [here](https://dev.mysql.com/downloads/mysql/), and [MySQL Workbence](https://dev.mysql.com/downloads/workbench/) if you want.
+
+#### Tables
+In MySQL, create a new schema named "PracticeDataBase" and two tables named "Students" and "Stu_Email", if you prefer a different schema name or different table names, you will need to modify the StudentMapper.xml file. In the "Students" table, create two columns named "StuName" and "StuId", respectively, while in the "Stu_Email" table, create two columns named "StuId" and "StuEmail", again if you prefer different column names, you will need to modify the student.java file.
 
 #### Username and Password
 
