@@ -193,8 +193,8 @@
                 });
             });
         </script> -->
-
         <br/>
+        <h2>To get/search students: </h2>
         <form id="getStuNameByEmail" action="/student/byemail" method="get">
             <label for="name">Email of the student: </label>
             <input type="text" id="email" name="email">

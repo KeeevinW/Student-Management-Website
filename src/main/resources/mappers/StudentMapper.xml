@@ -8,17 +8,17 @@
     </select>
 
     <select id="getStudentNameByEmail">
-        SELECT PracticeDataBase.Students.StuName
+        SELECT StuName
         FROM PracticeDataBase.Students
         INNER JOIN PracticeDataBase.Stu_email
-        ON Students.StuId = (SELECT PracticeDataBase.Stu_email.StuId FROM PracticeDataBase.Stu_email WHERE PracticeDataBase.Stu_email.StuEmail = #{email});
+        ON Students.StuId = (SELECT StuId FROM PracticeDataBase.Stu_email WHERE StuEmail = #{email});
     </select>
 
     <select id="getStudentEmailByName">
-        SELECT PracticeDataBase.Stu_email.StuEmail
+        SELECT StuEmail
         FROM PracticeDataBase.Stu_email
         INNER JOIN PracticeDataBase.Students
-        ON Stu_email.StuId = (SELECT PracticeDataBase.Students.StuId FROM PracticeDataBase.Students WHERE PracticeDataBase.Students.StuName = #{name});
+        ON Stu_email.StuId = (SELECT StuId FROM PracticeDataBase.Students WHERE StuName = #{name});
 
     </select>
 
