@@ -1,8 +1,18 @@
 # Student-Management-Website
 
+## Table of Contents
+- [Description](#description)
+  - [Front End](#front-end)
+  - [Back End](#back-end)
+  - [Database](#database)
+- [How To Run This Project](#how-to-run-this-project)
+  - [Maven](#maven)
+  - [MySQL](#mysql)
+  - [Running the Project](#running-the-project)
+
 ## Description
 
-This project is a student management website developed during my internship at ICBC Guangxi, Financial Technology Department. It serves as a practical exercise in building web applications using the Java Spring Boot framework.
+This project is a student management website developed during my internship at ICBC Guangxi, Financial Technology Department. It serves as a practical exercise in building web applications using the Java Spring Boot framework, as well as implementing multi-table queries.
 
 ### Front End
 
