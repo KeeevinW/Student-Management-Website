@@ -94,7 +94,7 @@
 
                 <form id="deleteForm">
                     <h2>To delete students:</h2>
-                    <label for="StuId">ID of the student: </label>
+                    <label for="deleteId">ID of the student: </label>
                     <input type="text" id="deleteId">
                     <br>
                     <input type="submit" value="Click to delete student">
@@ -131,13 +131,13 @@
 
                 <form id="updateStu">
                     <h2>To update students info:</h2>
-                    <label for="StuId">ID of the student: </label>
-                    <input id="updateID" name="updateID">
+                    <label for="updateID">ID of the student: </label>
+                    <input id="updateID" name="updateID" required>
                     <br>
-                    <label for="StuName">Name of the student: </label>
+                    <label for="updateName">Name of the student: </label>
                     <input id="updateName" name="updateName">
                     <br>
-                    <label for="StuEmail">Email of the student: </label>
+                    <label for="updateEmail">Email of the student: </label>
                     <input id="updateEmail" name="updateEmail" type="email">
                     <br>
                     <input type="submit" value="Click to Update Student Info">
@@ -216,7 +216,6 @@
                 <br/>
                 <form id="getStuNameByEmail" action="/student/byemail" method="get">
                     <h3>To get the student's name by email</h3>
-                    <br/>
                     <label for="name">Email of the student: </label>
                     <input type="text" id="email" name="email">
                     <br/>
@@ -225,7 +224,6 @@
                 <br/>
                 <form id="getStuEmailByName" action="/student/byname" method="get">
                     <h3>To get the student's email by name</h3>
-                    <br/>
                     <label for="name">Name of the student: </label>
                     <input type="text" id="name" name="name">
                     <br/>
@@ -234,7 +232,6 @@
                 <br/>
                 <form id="getStuNameAndEmailById" action="/student/byid" method="get">
                     <h3>To get the student's namd and email by id</h3>
-                    <br/>
                     <label for="id">ID of the student: </label>
                     <input type="text" id="id" name="id">
                     <br/>
@@ -244,7 +241,6 @@
                 <!-- get students 表单提交 -->
                 <form id="getAll" action="/student" method="get">
                     <h3>To get all students:</h3>
-                    <br>
                     <input type="submit" value="Get all students">
                 </form>
 

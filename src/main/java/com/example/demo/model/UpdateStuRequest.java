@@ -11,7 +11,7 @@ public class UpdateStuRequest {
     }
 
     public UpdateStuRequest (String str){
-        if(str.indexOf("@")==-1){
+        if(!str.contains("@")){
             this.name = str;
             this.email = "";
         }else {

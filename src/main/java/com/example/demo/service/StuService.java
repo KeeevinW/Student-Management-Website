@@ -38,13 +38,13 @@ public class StuService{
     }
 
     public String updateStudent(student stu){
-        if(stu.getEmail()=="" && stu.getName()==""){
-            return "Nothing to update";
+        if(stu.getId().isEmpty() || (stu.getEmail().isEmpty() && stu.getName().isEmpty())){
+            return "Nothing to update, please enter information to be updated at least one of the two input fields above.";
         }
-        if(stu.getEmail()!=""){
+        if(stu.getEmail().isEmpty()){
             studentMapper.updateStudentEmailById(stu.getEmail(),stu.getId());
         }
-        if(stu.getName()!=""){
+        if(!stu.getName().isEmpty()){
             studentMapper.updateStudentNameById(stu.getName(),stu.getId());
         }
         return "Student updated";

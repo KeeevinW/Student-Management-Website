@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -50,7 +51,11 @@ public class ViewController{
         HttpEntity<String> requestEntity = new HttpEntity<>(headers);
         HttpEntity<String> response = restTemplate.exchange(apiUrl + "?email=" + email, HttpMethod.GET, requestEntity, String.class);
 
-        model.addAttribute("StuName", response.getBody());
+        if(response.getBody() == null){
+            model.addAttribute("StuName", "No such student");
+        }else {
+            model.addAttribute("StuName", response.getBody());
+        }
         return "GetStudentNameByEmail";
     }
 
@@ -63,8 +68,11 @@ public class ViewController{
         HttpEntity<String> requestEntity = new HttpEntity<>(headers);
         HttpEntity<String> response = restTemplate.exchange(apiUrl + "?name=" + name, HttpMethod.GET, requestEntity, String.class);
 
-
-        model.addAttribute("StuEmail", response.getBody());
+        if(response.getBody() == null){
+            model.addAttribute("StuEmail", "No student found");
+        }else{
+            model.addAttribute("StuEmail", response.getBody());
+        }
         return "GetStudentEmailByName";
     }
 
@@ -77,7 +85,15 @@ public class ViewController{
         HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(headers);
         HttpEntity<Map<String, String>> response = restTemplate.exchange(apiUrl + "?id=" + id, HttpMethod.GET, requestEntity, new ParameterizedTypeReference<Map<String, String>>() {});
 
-        model.addAttribute("StuNameAndEmail", response.getBody());
+        if(response.getBody() == null){
+            Map<String, String> noStu = new HashMap<>();
+            noStu.put("StuName", "No such student");
+            noStu.put("StuEmail", "No such student");
+            model.addAttribute("StuNameAndEmail", noStu);
+        }else{
+            model.addAttribute("StuNameAndEmail", response.getBody());
+        }
+
         return "getStudentNameAndEmailById";
     }
 

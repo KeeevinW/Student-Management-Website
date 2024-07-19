@@ -48,7 +48,11 @@ public class ApiController {
 
     @PutMapping("/student/{id}") //PUT
     public String updateStudent(@PathVariable String id, @RequestBody UpdateStuRequest stu) {
-        return stuService.updateStudent(new student(stu.getName(), id, stu.getEmail()));
+        if(id == ""){
+            return "Please enter the student's id";
+        }else{
+            return stuService.updateStudent(new student(stu.getName(), id, stu.getEmail()));
+        }
         //TODO: case if the student is not found
     }
 
