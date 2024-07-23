@@ -1,4 +1,4 @@
-package com.example.demo.RSA;
+package com.example.demo.AES;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +9,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
 @Configuration
-public class RSAKeyConfig {
+public class AESKeyConfig {
 
     @Value("${spring.aes.secret_key}")
     private String secretKeyBase64;
