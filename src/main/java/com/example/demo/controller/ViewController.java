@@ -69,7 +69,7 @@ public class ViewController{
         HttpEntity<String> response = restTemplate.exchange(apiUrl + "?name=" + name, HttpMethod.GET, requestEntity, String.class);
 
         if(response.getBody() == null){
-            model.addAttribute("StuEmail", "No student found");
+            model.addAttribute("StuEmail", "No student found / This student doesn't have an email address.");
         }else{
             model.addAttribute("StuEmail", response.getBody());
         }

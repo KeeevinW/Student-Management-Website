@@ -79,7 +79,7 @@
                     <input type="text" id="Name" name="name">
                     <br>
                     <label for="StuId">ID of the student: </label>
-                    <input type="text" id="StuId" name="id">
+                    <input type="text" id="StuId" name="id" required>
                     <br>
                     <label for="StuEmail">Email of the student: </label>
                     <input type="email" id="StuEmail" name="email">
