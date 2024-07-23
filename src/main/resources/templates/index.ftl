@@ -112,7 +112,7 @@
                     })
                         .then(response => response.text())
                         .then(data => {
-                            if(data!="student not found"){
+                            if(data!="Student not found"){
                                 document.getElementById("StuDele").innerHTML="Success: " + data;
 
                             }else{
@@ -228,7 +228,7 @@
                 </form>
                 <br/>
                 <form id="getStuNameAndEmailById" action="/student/byid" method="get">
-                    <h3>To get the student's namd and email by id</h3>
+                    <h3>To get the student's name and email by id</h3>
                     <label for="id">ID of the student: </label>
                     <input type="text" id="id" name="id">
                     <br><br>

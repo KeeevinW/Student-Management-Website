@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.mapper.StudentMapper;
 import com.example.demo.model.student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.Cipher;
@@ -49,9 +50,15 @@ public class StuService{
 
     public String addStudent(student stu){
         stu.setId(encrypt(stu.getId()));
-        studentMapper.addStudentName(stu.getName(), stu.getId());
-        studentMapper.addStudentEmail(stu.getEmail(), stu.getId());
-        return "Student added";
+
+        try{
+            studentMapper.addStudentName(stu.getName(), stu.getId());
+            studentMapper.addStudentEmail(stu.getEmail(), stu.getId());
+            return "Student added";
+        }catch (DuplicateKeyException e){
+            return "Failed to add the student: duplicated ID";
+        }
+
     }
 
     public String updateStudent(student stu){
@@ -70,8 +77,9 @@ public class StuService{
 
     public String deleteStudent(String id){
         id=encrypt(id);
-        System.out.println(id);
-        System.out.println(id.equals("dZhrLPlGb/r0Qm4HAsgy/8Jf2LIdo4MAhAoTGzD1RrZ0vNSriIRr6PU1kPqTlKr3ChLC5evL3OcbYg4jKp0L8SBEdkHSM2ZJwKZgft3sTeSIM1KDsKxHmK36+pCUTXxGbW0jsITH/ddLOzyOAQFbAxwznMOz5yWRNmQ9zxaCYp6GP7cExz5U09kxlLCWpVBjguBeBTH4LYXbQNunk4Z4POtAAjhdGeHVr1yrV99qfJz4kfQAbOYbZfhGFby15E44AkKpcK62GyEbUtt/61ezGYry7rC9TNn7JpPdXPCowWAs8OXbuR+o7//P71ZVokxRKhGvyCXQuaXjdWQg6uR21g=="));
+        if(getStudentNameAndEmailById(id)==null){
+            return "Student not found";
+        }
         studentMapper.deleteStudentName(id);
         studentMapper.deleteStudentEmail(id);
         return "Student deleted";
