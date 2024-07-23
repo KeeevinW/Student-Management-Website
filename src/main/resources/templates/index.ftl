@@ -17,7 +17,6 @@
                 justify-content: space-around;
                 text-align: center;
             }
-
             .column {
                 flex: 1;
                 margin: 10px;
@@ -29,7 +28,7 @@
         </style>
 	</head>
 
-	<body style="text-align: center;">
+	<body>
         <h1>Student Management</h1>
 
         <div class="container">
@@ -77,18 +76,16 @@
                     <h2>To add students: </h2>
                     <label for="Name">Name of the student: </label>
                     <input type="text" id="Name" name="name">
-                    <br>
+                    <br><br>
                     <label for="StuId">ID of the student: </label>
                     <input type="text" id="StuId" name="id" required>
-                    <br>
+                    <br><br>
                     <label for="StuEmail">Email of the student: </label>
                     <input type="email" id="StuEmail" name="email">
-                    <br>
+                    <br><br>
                     <input type="submit" value="Click to add student">
                     <p id="StuAdd"></p>
                 </form>
-
-
 
                 <br><br>
 
@@ -96,7 +93,7 @@
                     <h2>To delete students:</h2>
                     <label for="deleteId">ID of the student: </label>
                     <input type="text" id="deleteId">
-                    <br>
+                    <br><br>
                     <input type="submit" value="Click to delete student">
                     <p id="StuDele"></p>
                 </form>
@@ -133,13 +130,13 @@
                     <h2>To update students info:</h2>
                     <label for="updateID">ID of the student: </label>
                     <input id="updateID" name="updateID" required>
-                    <br>
+                    <br><br>
                     <label for="updateName">Name of the student: </label>
                     <input id="updateName" name="updateName">
-                    <br>
+                    <br><br>
                     <label for="updateEmail">Email of the student: </label>
                     <input id="updateEmail" name="updateEmail" type="email">
-                    <br>
+                    <br><br>
                     <input type="submit" value="Click to Update Student Info">
                     <p id="Update"></p>
                 </form>
@@ -218,7 +215,7 @@
                     <h3>To get the student's name by email</h3>
                     <label for="name">Email of the student: </label>
                     <input type="text" id="email" name="email">
-                    <br/>
+                    <br><br>
                     <input type="submit" value="Click to get the student's name">
                 </form>
                 <br/>
@@ -226,7 +223,7 @@
                     <h3>To get the student's email by name</h3>
                     <label for="name">Name of the student: </label>
                     <input type="text" id="name" name="name">
-                    <br/>
+                    <br><br>
                     <input type="submit" value="Click to get the student's email">
                 </form>
                 <br/>
@@ -234,7 +231,7 @@
                     <h3>To get the student's namd and email by id</h3>
                     <label for="id">ID of the student: </label>
                     <input type="text" id="id" name="id">
-                    <br/>
+                    <br><br>
                     <input type="submit" value="Click to get the student's name and email">
                 </form>
                 <br/>
