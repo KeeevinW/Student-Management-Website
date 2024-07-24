@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -29,9 +28,9 @@ public class ViewController{
     @Autowired
     private RestTemplate restTemplate;
 
-    @GetMapping("/student")
+    @GetMapping("/getstudent")
     public String GetStu (Model model){
-        String apiUrl = "http://localhost:8080/api/student";
+        String apiUrl = "http://localhost:8080/api/getstudent";
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type","application/json");
@@ -42,65 +41,52 @@ public class ViewController{
         return "GetStudents";
     }
 
-    @GetMapping("/student/byemail")
+    @GetMapping("/getstudent/byemail")
     public String GetStuByE (Model model, @RequestParam("email") String email){ //Get student's name by email
-        String apiUrl = "http://localhost:8080/api/student/byemail";
+        String apiUrl = "http://localhost:8080/api/getstudent/byemail";
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
         HttpEntity<String> requestEntity = new HttpEntity<>(headers);
         HttpEntity<String> response = restTemplate.exchange(apiUrl + "?email=" + email, HttpMethod.GET, requestEntity, String.class);
 
-        if(response.getBody() == null){
-            model.addAttribute("StuName", "No such student");
-        }else {
-            model.addAttribute("StuName", response.getBody());
-        }
+        model.addAttribute("StuName", response.getBody());
+
         return "GetStudentNameByEmail";
     }
 
-    @GetMapping("/student/byname")
+    @GetMapping("/getstudent/byname")
     public String GetStuByN (Model model, @RequestParam("name") String name){ //Get student's email by name
-        String apiUrl = "http://localhost:8080/api/student/byname";
+        String apiUrl = "http://localhost:8080/api/getstudent/byname";
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
         HttpEntity<String> requestEntity = new HttpEntity<>(headers);
         HttpEntity<String> response = restTemplate.exchange(apiUrl + "?name=" + name, HttpMethod.GET, requestEntity, String.class);
 
-        if(response.getBody() == null){
-            model.addAttribute("StuEmail", "No student found / This student doesn't have an email address.");
-        }else{
-            model.addAttribute("StuEmail", response.getBody());
-        }
+        model.addAttribute("StuEmail", response.getBody());
+
         return "GetStudentEmailByName";
     }
 
-    @GetMapping("/student/byid")
+    @GetMapping("/getstudent/byid")
     public String GetStuByI (Model model, @RequestParam("id") String id){
-        String apiUrl = "http://localhost:8080/api/student/byid";
+        String apiUrl = "http://localhost:8080/api/getstudent/byid";
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
         HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(headers);
         HttpEntity<Map<String, String>> response = restTemplate.exchange(apiUrl + "?id=" + id, HttpMethod.GET, requestEntity, new ParameterizedTypeReference<Map<String, String>>() {});
 
-        if(response.getBody() == null){
-            Map<String, String> noStu = new HashMap<>();
-            noStu.put("StuName", "No such student");
-            noStu.put("StuEmail", "No such student");
-            model.addAttribute("StuNameAndEmail", noStu);
-        }else{
-            model.addAttribute("StuNameAndEmail", response.getBody());
-        }
+        model.addAttribute("StuNameAndEmail", response.getBody());
 
         return "getStudentNameAndEmailById";
     }
 
-    @PostMapping("/student")
+    @PostMapping("/addstudent")
     public String AddStu (Model model, @ModelAttribute student stu){
 
-        String apiUrl = "http://localhost:8080/api/student";
+        String apiUrl = "http://localhost:8080/api/addstudent";
 
         HttpHeaders headers = new HttpHeaders();
 

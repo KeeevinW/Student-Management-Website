@@ -11,6 +11,7 @@ import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -36,16 +37,25 @@ public class StuService{
     }
 
     public String getStudentNameByEmail(String email){
-        return studentMapper.getStudentNameByEmail(email);
+        String result = studentMapper.getStudentNameByEmail(email);
+        return (result!=null)? result : "No such student.";
     }
 
     public String getStudentEmailByName(String name){
-        return studentMapper.getStudentEmailByName(name);
+        String result = studentMapper.getStudentEmailByName(name);
+        return (result!=null)? result : "No student found / This student doesn't have an email address.";
     }
 
     public Map<String, String> getStudentNameAndEmailById(String id){
         id = encrypt(id);
-        return studentMapper.getStudentNameAndEmailById(id);
+        Map<String, String> result = studentMapper.getStudentNameAndEmailById(id);
+        if(result == null) {
+            Map<String, String> noStu = new HashMap<>();
+            noStu.put("StuName", "No such student");
+            noStu.put("StuEmail", "No such student");
+            return noStu;
+        }
+        return result;
     }
 
     public String addStudent(student stu){
@@ -63,6 +73,11 @@ public class StuService{
 
     public String updateStudent(student stu){
         stu.setId(encrypt(stu.getId()));
+
+        if(getStudentNameAndEmailById(stu.getId())==null){
+            return "Student not found: no matching student ID";
+        }
+
         if(stu.getId().isEmpty() || (stu.getEmail().isEmpty() && stu.getName().isEmpty())){
             return "Nothing to update, please enter information to be updated at least one of the two input fields above.";
         }
@@ -76,10 +91,10 @@ public class StuService{
     }
 
     public String deleteStudent(String id){
-        id=encrypt(id);
         if(getStudentNameAndEmailById(id)==null){
             return "Student not found";
         }
+        id=encrypt(id);
         studentMapper.deleteStudentName(id);
         studentMapper.deleteStudentEmail(id);
         return "Student deleted";

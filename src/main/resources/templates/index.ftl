@@ -72,7 +72,7 @@
 
 
                 <!-- add students 同步提交 -->
-                <form action="/student" method="post">
+                <form action="/addstudent" method="post">
                     <h2>To add students: </h2>
                     <label for="Name">Name of the student: </label>
                     <input type="text" id="Name" name="name">
@@ -104,7 +104,7 @@
 
                         var pathVar = document.getElementById('deleteId').value;
 
-                        fetch('api/student/' + encodeURIComponent(pathVar), {
+                        fetch('api/deletestudent/' + encodeURIComponent(pathVar), {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json'
@@ -152,7 +152,7 @@
                             }
 
                             $.ajax({
-                                url: "api/student/" + pathVar,
+                                url: "api/updatestudent/" + pathVar,
                                 type: "PUT",
                                 contentType: "application/json",
                                 data: JSON.stringify(formData),
@@ -211,7 +211,7 @@
                 <br/>
                 <h2>To get/search for students: </h2>
                 <br/>
-                <form id="getStuNameByEmail" action="/student/byemail" method="get">
+                <form id="getStuNameByEmail" action="/getstudent/byemail" method="get">
                     <h3>To get the student's name by email</h3>
                     <label for="name">Email of the student: </label>
                     <input type="text" id="email" name="email">
@@ -219,7 +219,7 @@
                     <input type="submit" value="Click to get the student's name">
                 </form>
                 <br/>
-                <form id="getStuEmailByName" action="/student/byname" method="get">
+                <form id="getStuEmailByName" action="/getstudent/byname" method="get">
                     <h3>To get the student's email by name</h3>
                     <label for="name">Name of the student: </label>
                     <input type="text" id="name" name="name">
@@ -227,7 +227,7 @@
                     <input type="submit" value="Click to get the student's email">
                 </form>
                 <br/>
-                <form id="getStuNameAndEmailById" action="/student/byid" method="get">
+                <form id="getStuNameAndEmailById" action="/getstudent/byid" method="get">
                     <h3>To get the student's name and email by id</h3>
                     <label for="id">ID of the student: </label>
                     <input type="text" id="id" name="id">
@@ -236,7 +236,7 @@
                 </form>
                 <br/>
                 <!-- get students 表单提交 -->
-                <form id="getAll" action="/student" method="get">
+                <form id="getAll" action="/getstudent" method="get">
                     <h3>To get all students:</h3>
                     <input type="submit" value="Get all students">
                 </form>

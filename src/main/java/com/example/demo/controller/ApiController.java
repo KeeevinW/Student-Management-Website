@@ -22,46 +22,45 @@ public class ApiController {
     @Autowired
     private StuService stuService;
 
-    @GetMapping("/student") //GET
+    @GetMapping("/getstudent") //GET
     public ResponseEntity<ArrayList<student>> getStudents() {
         ArrayList<student> responses = stuService.getStudents();
         return new ResponseEntity<>(responses, HttpStatus.OK);
     }
 
-    @GetMapping("/student/byemail")
+    @GetMapping("/getstudent/byemail")
     public ResponseEntity<String> getStudentNameByEmail(@RequestParam("email") String email) {
         String response = stuService.getStudentNameByEmail(email);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/student/byname")
+    @GetMapping("/getstudent/byname")
     public ResponseEntity<String> getStudentEmailByName(@RequestParam("name") String name) {
         String response = stuService.getStudentEmailByName(name);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/student/byid")
+    @GetMapping("/getstudent/byid")
     public ResponseEntity<Map<String, String>> getStudentNameAndEmailById(@RequestParam("id") String id){
         Map<String, String> response = stuService.getStudentNameAndEmailById(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping("/student/{id}") //PUT
+    @PutMapping("/updatestudent/{id}") //PUT
     public String updateStudent(@PathVariable String id, @RequestBody UpdateStuRequest stu) {
         if(id == ""){
             return "Please enter the student's id";
         }else{
             return stuService.updateStudent(new student(stu.getName(), id, stu.getEmail()));
         }
-        //TODO: case if the student is not found
     }
 
-    @DeleteMapping("/student/{id}") //DELETE
+    @DeleteMapping("/deletestudent/{id}") //DELETE
     public String deleteStudent(@PathVariable String id) {
         return stuService.deleteStudent(id);
     }
     
-    @PostMapping(value = "/student", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE) //POST
+    @PostMapping(value = "/addstudent", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE) //POST
     public ResponseEntity<String> addStudent(@ModelAttribute student stu){
         String response = stuService.addStudent(stu);
         return new ResponseEntity<>(response,HttpStatus.OK);

@@ -13,7 +13,7 @@
 
 ## Description
 
-This project is a student management website developed during my internship at ICBC Guangxi, Financial Technology Department. It serves as a practical exercise in building web applications using the Java Spring Boot framework, implementing multi-table queries, as well as encrypting sensitive data.
+This project is a student management website developed during my internship at ICBC Guangxi, Financial Technology Department, mentored by Mr. Wu. It serves as a practical exercise in building web applications using the Java Spring Boot framework, implementing multi-table queries, as well as encrypting sensitive data.
 
 ### Front End
 
@@ -35,7 +35,7 @@ This project uses Maven to manage dependencies, you can download it from [here](
 ```bash
 mv apache-maven-3.9.8 ~/apache-maven
 ```
-Then change the directory to the conf file by
+Then navigate the directory to the conf file by
 ```bash
 cd ./apache-maven/conf
 ```
@@ -78,21 +78,14 @@ export DB_PASSWORD=your_database_password
 ### Running the Project
 
 To run Spring Boot, navigate the directory to this project, e.g.
-```bash
+```sh
 cd Student-Management-Website/
 ```
 and type
-```bash
+```sh
 mvn spring-boot:run
 ```
 in the terminal to run the Spring Boot application. You should see an ASCII Art of "Spring"  and "BUILD SUCCESS" in green after typing "^C" to terminate this process.
-
-
-
-
-
-
-
 
 
 
