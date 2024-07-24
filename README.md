@@ -13,7 +13,7 @@
 
 ## Description
 
-This project is a student management website developed during my internship at ICBC Guangxi, Financial Technology Department, mentored by Mr. Wu. It serves as a practical exercise in building web applications using the Java Spring Boot framework, implementing multi-table queries, as well as encrypting sensitive data.
+This project is a student management website developed during my internship at ICBC Guangxi, Financial Technology Department, mentored by Mr. Wu. It serves as a practical exercise in building web applications using the Java Spring Boot framework, specific skills including implementing multi-table queries, encrypting sensitive data, as well as exception handling.
 
 ### Front End
 
@@ -22,6 +22,18 @@ The front end is built with the Freemarker template engine, which manages dynami
 ### Back End
 
 The back end is structured into three layers: controller, service, and mapper.
+
+#### Controller Layer
+
+The controller layer, in which the RESTful API is implemented, receives the requests from the front end via the URL and return responses by calling the service layer.
+
+#### Service Layer
+
+The service layer takes care of the specific logic and perform operation to the data through calling the mapper layer (DAO layer).
+
+#### Mapper Layer (DAO Layer)
+
+The mapper layer directly interacts with the database (to perform CRUD operation). This project uses MyBatis as the Object Relational Mapping (ORM) framework.
 
 ### Database
 
