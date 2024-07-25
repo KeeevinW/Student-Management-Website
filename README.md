@@ -107,7 +107,7 @@ Run the Spring Boot application:
 ```sh
 mvn spring-boot:run
 ```
-in the terminal to run the Spring Boot application. You should see an ASCII Art of "Spring". Press `^C` to terminate the process.
+You should see an ASCII Art of "Spring". Lastly, press `^C` to terminate the process.
 
 
 
