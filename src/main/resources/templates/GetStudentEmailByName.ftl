@@ -5,10 +5,15 @@
     <title>Get Student Email by Name</title>
 </head>
 <body style="text-align: center">
-    <h1>The Email of the Student is: </h1>
+    <#if StuEmail != "No student found / This student doesn't have an email address.">
+        <h1 style="margin-top: 20%">The Email of the Student is: </h1>
+        <br/>
+        <h2>${StuEmail}</h2>
+
+    <#else>
+        <h2 style="margin-top: 20%">${StuEmail}</h2>
+    </#if>
     <br/>
-    <p>${StuEmail}</p>
-    <br/>
-    <a href="/">Back to Main Page</a>
+    <button onclick="window.location.href='/'">Back to Main Page</button>
 </body>
 </html>

@@ -28,6 +28,6 @@
 			</#list>
         </table>
 		<br>
-        <a href="/">Back to Main Page</a>
+		<button onclick="window.location.href='/'">Back to Main Page</button>
 	</body>
 </html>

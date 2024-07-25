@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Description](#description)
+  - [Technologies Included](#technologies-included)
   - [Front End](#front-end)
   - [Back End](#back-end)
   - [Database](#database)
@@ -13,7 +14,16 @@
 
 ## Description
 
-This project is a student management website developed during my internship at ICBC Guangxi, Financial Technology Department, mentored by Mr. Wu. It serves as a practical exercise in building web applications using the Java Spring Boot framework, specific skills including implementing multi-table queries, encrypting sensitive data, as well as exception handling.
+This project is a student management website developed during my internship at ICBC Guangxi, Financial Technology Department, mentored by Mr. Wu. It serves as a practical exercise in building web applications using the Java Spring Boot framework, as well as programming skills such as implementing multi-table queries and handling exceptions.
+
+### Technologies Included
+
+- Java Spring Boot framework
+- RESTful API
+- Freemarker (template engine)
+- MyBatis (ORM framework)
+- SQL & MySQL
+- AES (Advanced Encryption Standard) for encryption
 
 ### Front End
 
@@ -29,7 +39,7 @@ The controller layer, in which the RESTful API is implemented, receives the requ
 
 #### Service Layer
 
-The service layer takes care of the specific logic and perform operation to the data through calling the mapper layer (DAO layer).
+The service layer contains the business logic of the application. It processes data and performs operations by calling the mapper layer (DAO layer).
 
 #### Mapper Layer (DAO Layer)
 
@@ -43,15 +53,15 @@ The project uses MyBatis for database access and MySQL as the database managemen
 
 ### Maven
 
-This project uses Maven to manage dependencies, you can download it from [here](https://maven.apache.org/download.cgi). After tarring or unzipping your downloaded file (depends on what kind of archive you downloaded (.tar.gz or .zip), mine was .tar.gz), move it to a local directory by
+This project uses Maven to manage dependencies, you can download it from [here](https://maven.apache.org/download.cgi). After tarring or unzipping your downloaded file (depends on what kind of archive you downloaded (.tar.gz or .zip), mine was .tar.gz), extract the file and move it to a local directory:
 ```bash
 mv apache-maven-3.9.8 ~/apache-maven
 ```
-Then navigate the directory to the conf file by
+Navigate to the configuration file:
 ```bash
 cd ./apache-maven/conf
 ```
-and type `ls` to see the file list. In the settings.xml file, add a repository mirror site inside the \<mirrors\> tag, I used the central mirror site
+Open the `settings.xml` file and add a repository mirror site inside the `\<mirrors\>` tag:
 ```xml
 <mirror>
   <id>central</id>
@@ -60,14 +70,14 @@ and type `ls` to see the file list. In the settings.xml file, add a repository m
 </mirror>
 ```
 You can find other Maven mirror repository sites [here](https://blog.csdn.net/qq_38217990/article/details/129257106).\
-Last but not least, add Maven to the path variable in your shell configuration file (~/.zshrc, ~/.bash_profile, etc.) by adding this line
+Then, Add Maven to the path variable in your shell configuration file (`~/.zshrc`, `~/.bash_profile`, etc.):
 ```sh
 export PATH=~/apache-maven/bin:$PATH
 ```
 
 ### Advanced Encryption Standard (AES)
 
-This project uses AES to perform encryption of students' IDs before storing them in the database. The key is assumed to be stored in the shell configuration file as an environment variable `AES_SECRET_KEY`. To get the key, run the "AESKeyGenerator.java" file under the "AES" directory, and copy the key to the shell configuration file
+This project uses AES to perform encryption of students' IDs before storing them in the database. The key is assumed to be stored in the shell configuration file as an environment variable `AES_SECRET_KEY`. To get the key, run the "AESKeyGenerator.java" file under the "AES" directory, and copy the key to the shell configuration file:
 ```sh
 export AES_SECRET_KEY=your_AES_secret_key
 ```
@@ -81,7 +91,7 @@ In MySQL, create a new schema named "PracticeDataBase" and two tables named "Stu
 
 #### Username and Password
 
-For security measures, you should avoid including sensitive information in a public GitHub repository, so I replaced my MySQL username and password in the application.yml file with `${DB_USERNAME}` and `${DB_PASSWORD}`. To run this project, you should add your MySQL username and password to your shell configuration file as environment variables
+For security measures, do not include sensitive information in a public GitHub repository, the MySQL username and password in the `application.yml` file with `${DB_USERNAME}` and `${DB_PASSWORD}`. To run this project, you should add your MySQL username and password to your shell configuration file as environment variables:
 ```sh
 export DB_USERNAME=your_database_username
 export DB_PASSWORD=your_database_password
@@ -89,15 +99,15 @@ export DB_PASSWORD=your_database_password
 
 ### Running the Project
 
-To run Spring Boot, navigate the directory to this project, e.g.
+To run this project, navigate to the project directory:
 ```sh
 cd Student-Management-Website/
 ```
-and type
+Run the Spring Boot application:
 ```sh
 mvn spring-boot:run
 ```
-in the terminal to run the Spring Boot application. You should see an ASCII Art of "Spring"  and "BUILD SUCCESS" in green after typing "^C" to terminate this process.
+in the terminal to run the Spring Boot application. You should see an ASCII Art of "Spring". Press `^C` to terminate the process.
 
 
 
