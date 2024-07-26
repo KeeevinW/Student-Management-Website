@@ -71,14 +71,15 @@ public class StuService{
     }
 
     public String updateStudent(student stu){
-        stu.setId(encrypt(stu.getId()));
 
         if(stu.getId().isEmpty() || (stu.getEmail().isEmpty() && stu.getName().isEmpty())){
             return "Nothing to update, please enter information to be updated at least one of the two input fields above.";
         }
 
-        Map<String, String> result = studentMapper.getStudentNameAndEmailById(stu.getId());
+        Map<String, String> result = getStudentNameAndEmailById(stu.getId());
         if(result == null) return "No matching student ID";
+
+        stu.setId(encrypt(stu.getId()));
 
         if(stu.getEmail().isEmpty()){
             studentMapper.updateStudentEmailById(stu.getEmail(),stu.getId());
@@ -90,7 +91,7 @@ public class StuService{
     }
 
     public String deleteStudent(String id){
-        Map<String, String> result = studentMapper.getStudentNameAndEmailById(id);
+        Map<String, String> result = getStudentNameAndEmailById(id);
         if(result == null) return "Student not found";
 
         id=encrypt(id);
