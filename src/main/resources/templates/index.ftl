@@ -214,7 +214,7 @@
                 <form id="getStuNameByEmail" action="/getstudent/byemail" method="get">
                     <h3>To get the student's name by email</h3>
                     <label for="name">Email of the student: </label>
-                    <input type="text" id="email" name="email">
+                    <input type="email" id="email" name="email">
                     <br><br>
                     <input type="submit" value="Click to get the student's name">
                 </form>

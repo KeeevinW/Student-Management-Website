@@ -14,7 +14,7 @@
 
 ## Description
 
-This project is a student management website developed during my internship at ICBC Guangxi, Financial Technology Department, mentored by Mr. Wu. It serves as a practical exercise in building web applications using the Java Spring Boot framework, as well as programming skills such as implementing multi-table queries and handling exceptions.
+This project is a student management website developed during my internship at ICBC Guangxi, Financial Technology Department, mentored by Mr. Wu. It serves as a practical exercise in building web applications using the Java Spring Boot framework, and developing programming skills such as implementing multi-table queries and handling exceptions.
 
 ### Technologies Included
 
