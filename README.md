@@ -14,7 +14,7 @@
 
 ## Description
 
-This project is a student management website developed during my internship at ICBC Guangxi, Financial Technology Department, mentored by Mr. Wu. It serves as a practical exercise in building web applications using the Java Spring Boot framework, and developing programming skills such as implementing multi-table queries and handling exceptions.
+This project is a student management website developed during my internship at ICBC Guangxi, Financial Technology Department, mentored by Mr. Wu. It serves as a practical exercise in building web applications using the Java Spring Boot framework and developing programming skills such as implementing multi-table queries and handling exceptions.
 
 ### Technologies Included
 
@@ -35,7 +35,7 @@ The back end is structured into three layers: controller, service, and mapper.
 
 #### Controller Layer
 
-The controller layer, in which the RESTful API is implemented, receives the requests from the front end via the URL and return responses by calling the service layer.
+The controller layer, in which the RESTful API is implemented, receives the requests from the front end via the URL and returns responses by calling the service layer.
 
 #### Service Layer
 
@@ -77,7 +77,7 @@ export PATH=~/apache-maven/bin:$PATH
 
 ### Advanced Encryption Standard (AES)
 
-This project uses AES to perform encryption of students' IDs before storing them in the database. The key is assumed to be stored in the shell configuration file as an environment variable `AES_SECRET_KEY`. To get the key, run the "AESKeyGenerator.java" file under the "AES" directory, and copy the key to the shell configuration file:
+This project uses AES to perform encryption of students' IDs before storing them in the database. The key is assumed to be stored in the shell configuration file as an environment variable `AES_SECRET_KEY`. To get the key, run the `AESKeyGenerator.java` file under the "AES" directory, and copy the key to the shell configuration file:
 ```sh
 export AES_SECRET_KEY=your_AES_secret_key
 ```
@@ -87,7 +87,7 @@ export AES_SECRET_KEY=your_AES_secret_key
 You can download MySQL from [here](https://dev.mysql.com/downloads/mysql/), and [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) if you want.
 
 #### Tables
-In MySQL, create a new schema named "PracticeDataBase" and two tables named "Students" and "Stu_Email", if you prefer a different schema name or different table names, you will need to modify the StudentMapper.xml file. In the "Students" table, create two columns named "StuName" and "StuId", respectively, while in the "Stu_Email" table, create two columns named "StuId" and "StuEmail", similarly, if you prefer different column names, you will need to modify the student.java file.
+In MySQL, create a new schema named `PracticeDataBase` and two tables named `Students` and `Stu_Email`, if you prefer a different schema name or different table names, you will need to modify the `StudentMapper.xml` file. In the `Students` table, create two columns named `StuName` and `StuId`, respectively, while in the `Stu_Email` table, create two columns named `StuId` and `StuEmail`, similarly, if you prefer different column names, you will need to modify the `student.java` file.
 
 #### Username and Password
 
@@ -108,6 +108,12 @@ Run the Spring Boot application:
 mvn spring-boot:run
 ```
 You should see an ASCII Art of "Spring". Lastly, press `^C` to terminate the process.
+
+Furthermore, if you want to package the project into a JAR (Java Archive) file, type the following command in the terminal:
+```sh
+mvn clean package
+```
+You should see the `.jar` file under the `target` directory
 
 
 
