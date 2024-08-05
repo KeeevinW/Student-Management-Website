@@ -35,6 +35,7 @@ public class StuService{
         return students_temp;
     }
 
+    // To practice multi-table queries
     public String getStudentNameByEmail(String email){
         String result = studentMapper.getStudentNameByEmail(email);
         return (result!=null)? result : "No such student.";
@@ -55,6 +56,12 @@ public class StuService{
             return noStu;
         }
         return result;
+    }
+
+    // To practice HttpClient
+    public String getStudentIdByName(String name){
+        String encryptedId = studentMapper.getStudentIdByName(name);
+        return encryptedId;
     }
 
     public String addStudent(student stu){

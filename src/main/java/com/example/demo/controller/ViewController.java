@@ -22,7 +22,7 @@ public class ViewController{
     
     @GetMapping("/")
     public String showForm() {
-        return "index";  // Render the index.html form template
+        return "index";  // Render the index.ftl form template
     }
 
     @Autowired

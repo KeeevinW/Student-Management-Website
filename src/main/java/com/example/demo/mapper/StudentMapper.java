@@ -16,6 +16,10 @@ public interface StudentMapper{
 
     String getStudentEmailByName(String name);
 
+    Map<String, String> getStudentNameAndEmailById(String id);
+
+    String getStudentIdByName(String name);
+
     void addStudentName(String name, String id);
 
     void addStudentEmail(String email, String id);
@@ -28,5 +32,5 @@ public interface StudentMapper{
 
     void deleteStudentEmail(String id);
 
-    Map<String, String> getStudentNameAndEmailById(String id);
+
 }

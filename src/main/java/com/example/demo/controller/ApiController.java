@@ -46,6 +46,15 @@ public class ApiController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @GetMapping("/getidbyname/{name}")
+    public String getStuIdByName(@PathVariable String name){
+        if(name == ""){
+            return "Please enter the student's name";
+        }else{
+            return stuService.getStudentIdByName(name);
+        }
+    }
+
     @PutMapping("/updatestudent/{id}") //PUT
     public String updateStudent(@PathVariable String id, @RequestBody UpdateStuRequest stu) {
         if(id == ""){

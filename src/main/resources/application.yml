@@ -1,10 +1,11 @@
 #spring.application.name=demo
 
+server:
+  port: 8080
+
 spring:
   application:
     name: demo
-  server:
-    port: 8080
   freemarker:
     template-loader-path: classpath:/templates/
     suffix: .ftl
