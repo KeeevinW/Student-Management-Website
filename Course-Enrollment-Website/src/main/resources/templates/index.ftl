@@ -16,17 +16,19 @@
     <form action="/getcourse" method="get">
         <h3>To get the student's courses list:</h3>
         <br>
-        <input id="name" name="name">
+        <label for="Name">Name of the student: </label>
+        <input id="name" name="name" required>
         <br>
         <input type="submit" value="Get all courses">
     </form>
-
+    <br><br>
     <form action="/addcourse" method="post">
-        <h2>Student's Name:</h2>
+        <h3>To add a course:</h3>
+        <label for="Name">Name of the student: </label>
+        <input id="name" name="name" required>
         <br>
-        <input id="name" name="name">
-        <br>
-        <input id="course" name="course">
+        <label for="course">Course to be added: </label>
+        <input id="course" name="course" required>
         <br>
         <input type="submit" value="Click to add the course">
     </form>

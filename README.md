@@ -11,6 +11,8 @@
   - [Advanced Encryption Standard (AES)](#advanced-encryption-standard-aes)
   - [MySQL](#mysql)
   - [Running the Project](#running-the-project)
+    - [Locally](#running-this-project-locally)
+    - [Remotely](#running-this-project-remotely)
 
 ## Description
 
@@ -24,6 +26,7 @@ This project is a student management website developed during my internship at I
 - MyBatis (ORM framework)
 - SQL & MySQL
 - AES (Advanced Encryption Standard) for encryption
+- HttpClient
 
 ### Front End
 
@@ -61,7 +64,7 @@ Navigate to the configuration file:
 ```bash
 cd ./apache-maven/conf
 ```
-Open the `settings.xml` file and add a repository mirror site inside the `\<mirrors\>` tag:
+Open the `settings.xml` file and add a repository mirror site inside the `<mirrors>` tag:
 ```xml
 <mirror>
   <id>central</id>
@@ -84,7 +87,7 @@ export AES_SECRET_KEY=your_AES_secret_key
 
 ### MySQL
 
-You can download MySQL from [here](https://dev.mysql.com/downloads/mysql/), and [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) if you want.
+You can download MySQL from [here](https://dev.mysql.com/downloads/mysql/), and [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) if needed.
 
 #### Tables
 In MySQL, create a new schema named `PracticeDataBase` and two tables named `Students` and `Stu_Email`, if you prefer a different schema name or different table names, you will need to modify the `StudentMapper.xml` file. In the `Students` table, create two columns named `StuName` and `StuId`, respectively, while in the `Stu_Email` table, create two columns named `StuId` and `StuEmail`, similarly, if you prefer different column names, you will need to modify the `student.java` file.
@@ -97,7 +100,7 @@ export DB_USERNAME=your_database_username
 export DB_PASSWORD=your_database_password
 ```
 
-### Running the Project
+### Running this Project Locally
 
 To run this project, navigate to the project directory:
 ```sh
@@ -107,13 +110,62 @@ Run the Spring Boot application:
 ```sh
 mvn spring-boot:run
 ```
-You should see an ASCII Art of "Spring". Lastly, press `^C` to terminate the process.
+You should see an ASCII Art of "Spring". You can also access the website through `localhost:8080` on your browser.\
+Lastly, press `^C` to terminate the process.\
+To also run the course enrollment website, navigate to the corresponding directory:
+```sh
+cd Course-Enrollment-Website/
+```
+and run the Spring Boot application:
+```sh
+mvn spring-boot:run
+```
+You can access the website through `localhost: 8081` on your browser
 
-Furthermore, if you want to package the project into a JAR (Java Archive) file, type the following command in the terminal:
+### Running this Project Remotely
+You can also run this project on a virtual machine (VM) using Ubuntu.
+#### Prerequisites
+- JDK 22
+- openssh
+- MySQL
+
+In the project's directory, package the project into a JAR (Java Archive) file:
 ```sh
 mvn clean package
 ```
-You should see the `.jar` file under the `target` directory
+You should see the `.jar` file under the `target` directory. For multiple applications, package each one separately.
+
+Using `scp` to transfer the files to your VM:
+```sh
+scp path/to/the/file/jar_file_name.jar vm_username@vm_ip_address:./target/path/
+```
+Find your VM's IP address using `ip addr`.
+
+After logging in to your VM, set up the environment variable:
+```sh
+export PATH=~/apache-maven/bin:$PATH
+export AES_SECRET_KEY=your_AES_secret_key
+export DB_USERNAME=your_database_username
+export DB_PASSWORD=your_database_password
+# Enclose values containing special characters in single quotes.
+```
+
+In macOS, in System Settings -> General -> Advanced, turn on the `Remote Login` toggle, then connect to your local MySQL database from the VM:
+```sh
+ssh -L 3306:localhost:3306 your_computer_user_name@your_computer_ip_address
+```
+You will be prompted for your password.
+
+In another terminal window, log into the VM, navigate to the corresponding directory, and run the applications:
+```sh
+java -jar jar_file_name.jar
+```
+You should see an ASCII Art of "Spring", and you can access the website through `http://{vm_ip_address}:8080/`.
+
+Feel free to adjust further based on specific needs or preferences!
+
+If you have any questions, contact me via email at [xuanye_wang@ucsb.edu](mailto:xuanye_wang@ucsb.edu).
+
 
 
 
