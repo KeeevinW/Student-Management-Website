@@ -20,12 +20,21 @@ public class CourseService {
     public ArrayList<String> getStuCourses(String name){
         String url = "http://localhost:8080/api/getidbyname/"+name;
         String id = apiService.getStuIdByName(url);
+        if(id.equals("")){
+            ArrayList<String> temp = new ArrayList<String>();
+            temp.add("No such student");
+            return temp;
+        }
         return courseMapper.getStuCourses(id);
     }
 
     public String addCourse(String name, String course){
         String url = "http://localhost:8080/api/getidbyname/"+name;
         String id = apiService.getStuIdByName(url);
+        if(id.equals("")){
+            return "No such student";
+        }
+
         try {
             courseMapper.addCourse(id, course);
         }catch (DuplicateKeyException e){

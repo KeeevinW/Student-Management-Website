@@ -78,6 +78,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.example.demo.DemoApplication</mainClass> <!-- Replace this with your intended main class -->
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
